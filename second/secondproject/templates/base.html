@@ -1,6 +1,16 @@
 <nav>
-    <a href ="{% url 'signup' %}">signup</a>
-    <a href ="{% url 'login' %}">login</a>
+    {% if user.is_authenticated %}
+    환영합니다. {{ user.username }} 님!
+    <a href = "{% url 'new' %}">글쓰기</a>
+    <a href = "javascript:{document.getElementById('logout').submit()}">logout</a>
+    <form id= "logout" method="POST" action="{% url 'logout' %}">
+        {% csrf_token %} <input type="hidden" />
+    </form>
+
+    {% else %}
+    <a href = "{% url 'signup' %}">signup</a>
+    <a href = "{% url 'login' %}">login</a>
+    {% endif %}
 </nav>
 
 이 아래에 컨텐츠가 올 예정입니다.
