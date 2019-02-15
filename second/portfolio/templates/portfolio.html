@@ -1,0 +1,10 @@
+{% load staticfiles %}
+<img src = "{% static 'jdm.jpg'%}" height = 400 alt="안선생님">
+
+{% for portfolio in portfolios.all %}
+
+<img src = "{{portfolio.image.url}}" height = 400>
+{{portfolio.description}}
+
+
+{% endfor %}
